@@ -1,10 +1,16 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import '../App.css';
 import Form from './Form';
 import TodoList from './TodoList';
 
+const FILTER_OPTIONS = {
+ ALL,
+ COMPLETED,
+ UNCOMPLETYED
+}
+
 function App() {
-  const [filterDisplay, setFilterDisplay] = useState("all")
+  const [displayFilter, setDisplayFilter] = useState(FILTER_OPTIONS.ALL)
   const [todos, setTodos] = useState([{
     text: "My first todo",
     isCompleted: false
@@ -32,7 +38,14 @@ function App() {
   };
 
   const getFilteredTodos = () => {
-    // return todos.filter(...)
+    let isCompletedFilter;
+    if(displayFilter === FILTER_OPTIONS.ALL) {
+      return todos;
+    }
+    else {
+      isCompletedFilter= (displayFilter === FILTER_OPTIONS.COMPLETED)
+    }
+    return todos.filter( todo => todo.isCompleted === isCompletedFilter);
   }
 
   return (
