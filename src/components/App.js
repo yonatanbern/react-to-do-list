@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import '../App.css';
 import Form from './Form';
 import TodoList from './TodoList';
+import Filterbar from './Filterbar';
 
 const FILTER_OPTIONS = {
  ALL,
@@ -54,8 +55,9 @@ function App() {
         <p>Todo List</p>
         
         <Form addTodo={addTodo} />
-        <TodoList todos={() => getFilteredTodos()} removeTodo={removeTodo} toggleTodo={toggleTodo} />
+        <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} />
 
+      <Filterbar originList={todos}/>
       </header>
     </div>
   );
