@@ -18,7 +18,7 @@ const Form = ({addTodo})=> {
         <div>
             <form onSubmit={handleSubmit}>
                 <input type="text" value={user_input} placeholder="enter new task.." onChange={handleChange}/>
-                <button type="submit">Add</button>
+                <button type="submit" className="btn-submit">Add</button>
             </form>
         </div>
     )
