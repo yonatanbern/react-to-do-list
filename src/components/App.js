@@ -1,12 +1,11 @@
 import React, {useState} from 'react'
 import '../App.css';
-import Todo from './Todo';
 import Form from './Form';
+import TodoList from './TodoList';
 import Filterbar from './Filterbar';
 
 function App() {
-
-  
+  const [filterDisplay, setFilterDisplay] = useState("all")
   const [todos, setTodos] = useState([{
     text: "My first todo",
     isCompleted: false
@@ -16,10 +15,26 @@ function App() {
     isCompleted: true
   }])
 
-  const addTodo = text => {
+  const addTodo = (text) => {
     const newTodos = [...todos, { text, isCompleted: false }];
     setTodos(newTodos);
   };
+
+  const removeTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
+  const toggleTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = !newTodos[index].isCompleted;
+    setTodos(newTodos);
+  };
+
+  const getFilteredTodos = () => {
+    // return todos.filter(...)
+  }
 
   return (
     <div >
@@ -27,14 +42,7 @@ function App() {
         <p>Todo List</p>
         
         <Form addTodo={addTodo} />
-
-        {todos.map((todo, i) => (
-          <Todo
-            key={i}
-            index={i}
-            todo={todo}
-          />
-        ))}
+        <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} />
 
       <Filterbar originList={todos}/>
       </header>
