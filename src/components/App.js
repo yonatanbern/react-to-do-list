@@ -2,8 +2,11 @@ import React, {useState} from 'react'
 import '../App.css';
 import Todo from './Todo';
 import Form from './Form';
+import Filterbar from './Filterbar';
 
 function App() {
+
+  
   const [todos, setTodos] = useState([{
     text: "My first todo",
     isCompleted: false
@@ -33,6 +36,7 @@ function App() {
           />
         ))}
 
+      <Filterbar originList={todos}/>
       </header>
     </div>
   );

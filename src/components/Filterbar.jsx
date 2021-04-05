@@ -1,9 +1,17 @@
 import React from 'react'
 
-function Filterbar() {
+const Filterbar = ({originList})=> {
+
+
+    
     return (
         <div>
-            
+            Filterbar
+
+            <button>All</button>
+            <button>Active</button>
+            <button>Completed</button>
+
         </div>
     )
 }
