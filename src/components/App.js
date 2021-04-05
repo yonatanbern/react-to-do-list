@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import '../App.css';
-import Todo from './Todo';
 import Form from './Form';
+import TodoList from './TodoList';
 
 function App() {
   const [todos, setTodos] = useState([{
@@ -13,8 +13,20 @@ function App() {
     isCompleted: true
   }])
 
-  const addTodo = text => {
+  const addTodo = (text) => {
     const newTodos = [...todos, { text, isCompleted: false }];
+    setTodos(newTodos);
+  };
+
+  const removeTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
+  const toggleTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = !newTodos[index].isCompleted;
     setTodos(newTodos);
   };
 
@@ -24,14 +36,7 @@ function App() {
         <p>Todo List</p>
         
         <Form addTodo={addTodo} />
-
-        {todos.map((todo, i) => (
-          <Todo
-            key={i}
-            index={i}
-            todo={todo}
-          />
-        ))}
+        <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} />
 
       </header>
     </div>
