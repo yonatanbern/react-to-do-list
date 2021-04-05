@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import '../App.css';
 import Todo from './Todo';
-// import Form from './Form';
+import Form from './Form';
 
 function App() {
   const [todos, setTodos] = useState([{
@@ -23,7 +23,7 @@ function App() {
       <header className="App-header">
         <p>Todo List</p>
         
-        {/* <Form addTodo={addTodo} /> */}
+        <Form addTodo={addTodo} />
 
         {todos.map((todo, i) => (
           <Todo
