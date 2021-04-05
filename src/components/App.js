@@ -5,9 +5,9 @@ import TodoList from './TodoList';
 import Filterbar from './Filterbar';
 
 const FILTER_OPTIONS = {
- ALL,
- COMPLETED,
- UNCOMPLETYED
+ ALL: 0,
+ COMPLETED: 1,
+ UNCOMPLETYED: 2
 }
 
 function App() {
@@ -45,8 +45,8 @@ function App() {
     }
     else {
       isCompletedFilter= (displayFilter === FILTER_OPTIONS.COMPLETED)
+      return todos.filter( todo => todo.isCompleted === isCompletedFilter);
     }
-    return todos.filter( todo => todo.isCompleted === isCompletedFilter);
   }
 
   return (
@@ -55,9 +55,9 @@ function App() {
         <p>Todo List</p>
         
         <Form addTodo={addTodo} />
-        <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} />
+        <TodoList todos={getFilteredTodos()} removeTodo={removeTodo} toggleTodo={toggleTodo} />
 
-      <Filterbar originList={todos}/>
+      <Filterbar originList={todos} setDisplayFilter={setDisplayFilter} filterOptions={FILTER_OPTIONS} />
       </header>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Filterbar = ({originList})=> {
+const Filterbar = ({originList, setDisplayFilter, filterOptions })=> {
 
     const numOfActiveTasks = (originList)=> {
         let num = 0;
@@ -12,18 +12,12 @@ const Filterbar = ({originList})=> {
         return num;
     }
 
-    const changeDisplayStatus = (status)=> {
-        console.log('inside filterbar:', status);
-        
-
-    }
-
     return (
         <div>
             Filterbar:
-            <button onClick={()=>changeDisplayStatus('all')}>All</button>
-            <button onClick={()=>changeDisplayStatus('active')}>Active</button>
-            <button onClick={()=>changeDisplayStatus('completed')}>Completed</button>
+            <button onClick={()=>setDisplayFilter(filterOptions.ALL)}>All</button>
+            <button onClick={()=>setDisplayFilter(filterOptions.UNCOMPLETED)}>Active</button>
+            <button onClick={()=>setDisplayFilter(filterOptions.COMPLETED)}>Completed</button>
             <h5>{numOfActiveTasks(originList)} items left</h5>
 
         </div>
