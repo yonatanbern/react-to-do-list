@@ -12,17 +12,18 @@ const Filterbar = ({originList})=> {
         return num;
     }
 
-    
+    const changeDisplayStatus = (status)=> {
+        console.log('inside filterbar:', status);
+        
 
-
+    }
 
     return (
         <div>
-            Filterbar
-
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
+            Filterbar:
+            <button onClick={()=>changeDisplayStatus('all')}>All</button>
+            <button onClick={()=>changeDisplayStatus('active')}>Active</button>
+            <button onClick={()=>changeDisplayStatus('completed')}>Completed</button>
             <h5>{numOfActiveTasks(originList)} items left</h5>
 
         </div>
