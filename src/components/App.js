@@ -4,6 +4,7 @@ import Form from './Form';
 import TodoList from './TodoList';
 
 function App() {
+  const [filterDisplay, setFilterDisplay] = useState("all")
   const [todos, setTodos] = useState([{
     text: "My first todo",
     isCompleted: false
@@ -30,13 +31,17 @@ function App() {
     setTodos(newTodos);
   };
 
+  const getFilteredTodos = () => {
+    // return todos.filter(...)
+  }
+
   return (
     <div >
       <header className="App-header">
         <p>Todo List</p>
         
         <Form addTodo={addTodo} />
-        <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} />
+        <TodoList todos={() => getFilteredTodos()} removeTodo={removeTodo} toggleTodo={toggleTodo} />
 
       </header>
     </div>
