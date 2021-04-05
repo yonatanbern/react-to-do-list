@@ -7,7 +7,6 @@ function TodoList({todos, removeTodo, toggleTodo}) {
             {todos.map((todo, i) => (
           <Todo
             key={i}
-            index={i}
             todo={todo}
             removeTodo={removeTodo}
             toggleTodo={toggleTodo}

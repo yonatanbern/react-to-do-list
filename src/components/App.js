@@ -13,28 +13,33 @@ const FILTER_OPTIONS = {
 function App() {
   const [displayFilter, setDisplayFilter] = useState(FILTER_OPTIONS.ALL)
   const [todos, setTodos] = useState([{
+    id: 1,
     text: "My first todo",
     isCompleted: false
   },
   {
+    id: 2,
     text: "My second todo",
     isCompleted: true
   }])
 
   const addTodo = (text) => {
-    const newTodos = [...todos, { text, isCompleted: false }];
+    const newTodos = [...todos, { id: Math.floor(Math.random()*10000), text, isCompleted: false }];
     setTodos(newTodos);
   };
 
-  const removeTodo = (index) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
+  const removeTodo = (id) => {
+    const newTodos = todos.filter(todo => todo.id !== id);
     setTodos(newTodos);
   };
 
-  const toggleTodo = (index) => {
+  const toggleTodo = (id) => {
     const newTodos = [...todos];
-    newTodos[index].isCompleted = !newTodos[index].isCompleted;
+    newTodos.forEach(todo => {
+      if(todo.id === id) {
+        todo.isCompleted = !todo.isCompleted
+      }
+    })
     setTodos(newTodos);
   };
 
@@ -55,9 +60,10 @@ function App() {
         <p>Todo List</p>
         
         <Form addTodo={addTodo} />
-        <TodoList todos={getFilteredTodos()} removeTodo={removeTodo} toggleTodo={toggleTodo} />
 
-      <Filterbar originList={todos} setDisplayFilter={setDisplayFilter} filterOptions={FILTER_OPTIONS} />
+        <TodoList todos={getFilteredTodos()} removeTodo={removeTodo} toggleTodo={toggleTodo} />
+        
+        <Filterbar originList={todos} setDisplayFilter={setDisplayFilter} filterOptions={FILTER_OPTIONS} />
       </header>
     </div>
   );
