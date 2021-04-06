@@ -3,7 +3,7 @@ import Todo from './Todo';
 
 function TodoList({todos, removeTodo, toggleTodo}) {
     return (
-        <div>
+        <div className="list">
             {todos.map((todo, i) => (
           <Todo
             key={i}
