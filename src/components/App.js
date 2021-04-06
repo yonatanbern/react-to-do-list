@@ -54,6 +54,11 @@ function App() {
     }
   }
 
+  const removeCompletedTodos = () => {
+    const newTodos = todos.filter(todo => todo.isCompleted === false);
+    setTodos(newTodos);
+  }
+
   return (
     <div >
       <header className="App-header">
@@ -63,7 +68,7 @@ function App() {
 
         <TodoList todos={getFilteredTodos()} removeTodo={removeTodo} toggleTodo={toggleTodo} />
         
-        <Filterbar originList={todos} setDisplayFilter={setDisplayFilter} filterOptions={FILTER_OPTIONS} />
+        <Filterbar originList={todos} setDisplayFilter={setDisplayFilter} filterOptions={FILTER_OPTIONS} removeCompletedTodos={removeCompletedTodos} />
       </header>
     </div>
   );
