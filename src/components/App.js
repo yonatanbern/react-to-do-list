@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../App.css';
+import '../App2.css';
 import Form from './Form';
 import TodoList from './TodoList';
 import Filterbar from './Filterbar';
@@ -59,6 +60,11 @@ function App() {
     setTodos(newTodos);
   }
 
+  const hasCompletedTodos = () => {
+    const completedTodos = todos.filter(todo => todo.isCompleted === true);
+    return completedTodos.length > 0
+  }
+
   return (
     <div >
       <header className="App-header">
@@ -68,7 +74,7 @@ function App() {
 
         <TodoList todos={getFilteredTodos()} removeTodo={removeTodo} toggleTodo={toggleTodo} />
         
-        <Filterbar originList={todos} setDisplayFilter={setDisplayFilter} filterOptions={FILTER_OPTIONS} removeCompletedTodos={removeCompletedTodos} />
+        <Filterbar originList={todos} hasCompletedTodos={hasCompletedTodos()} setDisplayFilter={setDisplayFilter} filterOptions={FILTER_OPTIONS} removeCompletedTodos={removeCompletedTodos} />
       </header>
     </div>
   );

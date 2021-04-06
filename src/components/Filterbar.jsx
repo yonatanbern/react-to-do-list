@@ -1,6 +1,7 @@
 import React from 'react'
+import styled from 'styled-components'
 
-const Filterbar = ({originList, setDisplayFilter, filterOptions, removeCompletedTodos })=> {
+const Filterbar = ({originList, hasCompletedTodos, setDisplayFilter, filterOptions, removeCompletedTodos })=> {
 
     const numOfActiveTasks = (originList)=> {
         let num = 0;
@@ -20,10 +21,18 @@ const Filterbar = ({originList, setDisplayFilter, filterOptions, removeCompleted
             <button onClick={()=>setDisplayFilter(filterOptions.COMPLETED)}>Completed</button>
             
             <br/>
-            <button onClick={()=>removeCompletedTodos()}>Clear completed</button>
+            <LinkButton show={hasCompletedTodos} onClick={removeCompletedTodos}>Clear completed</LinkButton>
             <h5>{numOfActiveTasks(originList)} items left</h5>
         </div>
     )
 }
 
 export default Filterbar
+
+export const LinkButton = styled.button`
+  padding: 0.2rem;
+  /* margin-left: 0.2rem;
+  font-size: 1rem; */
+  display: ${({ show }) => (show ? "block" : "none")};
+`;
+
