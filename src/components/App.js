@@ -65,16 +65,16 @@ function App() {
   }
 
   return (
-    <div >
-      <header className="App-header">
+    <div className="App-body">
         <p>Todo List</p>
+      <div className="container">
         
         <Form addTodo={addTodo} />
 
         <TodoList todos={getFilteredTodos()} removeTodo={removeTodo} toggleTodo={toggleTodo} />
         
         <Filterbar originList={todos} hasCompletedTodos={hasCompletedTodos()} displayFilter={displayFilter} setDisplayFilter={setDisplayFilter} filterOptions={FILTER_OPTIONS} removeCompletedTodos={removeCompletedTodos} />
-      </header>
+      </div>
     </div>
   );
 }

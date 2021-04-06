@@ -15,12 +15,10 @@ const Form = ({addTodo})=> {
         set_user_input("");
     }
     return (
-        <div className="container-form">
             <form className="main-form" onSubmit={handleSubmit}>
-                <input type="text" value={user_input} placeholder="enter new task.." onChange={handleChange}/>
+                <input className="input-form" type="text" value={user_input} placeholder="enter new task.." onChange={handleChange}/>
                 <button type="submit" className="btn-submit">Add</button>
             </form>
-        </div>
     )
 }
 

@@ -1,16 +1,20 @@
-.App {
+.App-body {
   text-align: center;
-}
-
-.App-header {
-  background-color: #eeebdd;
+  background-color: papayawhip;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: #5f695e;
+}
+
+.container {
+  min-width: 40vw;
+  padding: 2rem;
+  box-shadow: 0rem 2rem 4rem rgb(0 0 0 / 30%);
+  background: white;
 }
 
 .App-link {
@@ -51,19 +55,15 @@
 .main-form {
   /* background-color: red; */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-.container-form {
-  padding: 1rem;
-  background-color: white;
-  border: 1px solid #bdd2b6;
-  /* box-shadow: 3px 3px  gray; */
+.input-form {
+  flex-basis: 80%;
 }
 
 .list {
-  /* background-color: red; */
-  width: 20.1rem;
   /* display: flex; */
   font-size: 20px;
 
@@ -74,6 +74,7 @@
   border-bottom: 1px solid gray;
   justify-content: space-between;
   margin: 0.8rem 0;
+  padding: 0.4rem;
 }
 
 .task button{
