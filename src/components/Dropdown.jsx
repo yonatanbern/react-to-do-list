@@ -4,9 +4,25 @@ import Geust from './Geust'
 const Dropdown = ({title, list})=> {
 
     const [is_drop_open, set_drop_open] = useState(false);
-    const [guests_title, set_guests_title] = useState(title);
+    // const [guests_title, set_guests_title] = useState(title);
     const [counters, set_scounters] = useState({adults: 0, children:0, infants:0});
-    // console.log('in drop',list);
+
+    const getTitleGuests = ()=> {
+
+        console.log('in dropsown:',counters);
+        let num_of_guests = counters.adults + counters.children;
+        let num_of_infants = counters.infants;
+
+        if (num_of_guests > 0 && num_of_infants >0){
+            return `Guests ${num_of_guests}, Infants ${num_of_infants}`;
+        } else if (num_of_guests > 0){
+            return `Guests ${num_of_guests}`;
+        } else if(num_of_infants > 0){
+            return `Infants ${num_of_infants}`;
+        } else {
+            return 'Guests..'
+        }
+    }
 
     const handleClickOpen = ()=>{
        is_drop_open ? set_drop_open(false) : set_drop_open(true);
@@ -14,19 +30,19 @@ const Dropdown = ({title, list})=> {
 
     return (
         <div className="dropdown" >
-            {console.log('new render->', counters)}
+            {/* {console.log('new render->', counters)} */}
             <div className="dropdown-top">
-                <label>{guests_title}</label>
+                <label>{getTitleGuests()}</label>
                 <button onClick={handleClickOpen}>{'>'}</button>
             </div>
-            {is_drop_open? <ul className="dropdown-list">
+            {is_drop_open? <div className="dropdown-list">
                 {list?.map(itm=> <li>{itm}</li>)}
             
-                <Geust label="Adults" setGuests={set_guests_title} set_counters={set_scounters} main_counters={counters}/>
-                <Geust label="Children" setGuests={set_guests_title} set_counters={set_scounters} main_counters={counters}/>
-                <Geust label="Infants" setGuests={set_guests_title} set_counters={set_scounters} main_counters={counters}/>
+                <Geust className="guest-tag" label="Adults"  set_counters={set_scounters} main_counters={counters}/>
+                <Geust className="guest-tag" label="Children" set_counters={set_scounters} main_counters={counters}/>
+                <Geust className="guest-tag" label="Infants" set_counters={set_scounters} main_counters={counters}/>
                 
-            </ul>: undefined}
+            </div>: undefined}
         </div>
     )
 }

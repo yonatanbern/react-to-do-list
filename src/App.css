@@ -134,21 +134,36 @@
 /* background-color: blue; */
   display: flex;
   justify-content: space-between;
+  color: black;
+  margin-right: 15px;
+  margin-bottom: 6px;
+
+  /* justify-content: space-between; */
 }
 
 .guest button{
   /* background-color: blue; */
   border: 1px solid gray;
   border-radius: 50%;
+  font-size: 20px;
+  font-weight: 100;
+  /* margin-right: 15px; */
+  /* padding: 8px; */
    
 }
 
 .guest label{
-  /* background-color: blue; */
- 
-  margin-right: 10rem;
+  margin-left: 15px;
    
 }
+
+.counters {
+  display: flex;
+  /* border: 1px solid black; */
+  flex-basis: 15%;
+  justify-content: space-between;
+}
+
 
 
 /* end of adding css styling - yb */
