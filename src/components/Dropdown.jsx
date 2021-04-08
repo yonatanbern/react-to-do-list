@@ -5,7 +5,7 @@ const Dropdown = ({title, list})=> {
 
     const [is_drop_open, set_drop_open] = useState(false);
     const [guests_title, set_guests_title] = useState(title);
-    const [counters, set_scounters] = useState([0,0,0]);
+    const [counters, set_scounters] = useState({});
     // console.log('in drop',list);
 
 
