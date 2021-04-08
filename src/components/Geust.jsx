@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 
-const Geust = ({label, setGuests})=> {
+const Geust = ({label, setGuests, main_counters, set_counters})=> {
     const [counter, set_counetr] = useState(0);
 
     const counterAdd = ()=> {
         let c = counter + 1;
         set_counetr(c);
         setGuests(label + ' ' + c)
+        
     }
 
     const counterSub = ()=> {
@@ -15,6 +16,7 @@ const Geust = ({label, setGuests})=> {
             set_counetr(c);
             setGuests(label + ' ' + c)
         } 
+        // set_scounters();
     }
 
 
