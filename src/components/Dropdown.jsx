@@ -5,10 +5,8 @@ const Dropdown = ({title, list})=> {
 
     const [is_drop_open, set_drop_open] = useState(false);
     const [guests_title, set_guests_title] = useState(title);
-    const [counters, set_scounters] = useState({});
+    const [counters, set_scounters] = useState({adults: 0, children:0, infants:0});
     // console.log('in drop',list);
-
-
 
     const handleClickOpen = ()=>{
        is_drop_open ? set_drop_open(false) : set_drop_open(true);
@@ -16,6 +14,7 @@ const Dropdown = ({title, list})=> {
 
     return (
         <div className="dropdown" >
+            {console.log('new render->', counters)}
             <div className="dropdown-top">
                 <label>{guests_title}</label>
                 <button onClick={handleClickOpen}>{'>'}</button>

@@ -7,11 +7,6 @@ const Form = ()=> {
 
     const [user_input, set_user_input] = useState("");
 
-    // const dropdown_list = [
-    //     'one', 'two', 'three'
-    //   ];
-   
-
     const handleChange = (e)=> {
         console.log('change!' ,e.target.value );
         set_user_input(e.target.value);
